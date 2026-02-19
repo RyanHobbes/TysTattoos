@@ -20,7 +20,97 @@ body {
   font-family: Arial, sans-serif;
   background-color: #111;
   color: white;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
 }
+
+/* ----------------------------- */
+/* SMALL SCREENS                 */
+/* ----------------------------- */
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive nav for small screens */
+@media (max-width: 768px) {
+
+  .navbar nav a,
+  .navbar nav .book-btn {
+    width: 100%;
+    padding: 10px 18px;
+    background: #000;
+    border-radius: 9px;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+  .navbar nav a:hover{
+   background: #c00000;
+
+  }
+
+  .navbar nav .book-btn{
+    order: -1;
+    background: #7e6b01;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar nav {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    background-color: #000;
+    flex-direction: column;
+    width: 200px;
+    height: 100vh;
+    padding: 100px 40px 40px 40px;
+    display: flex;
+    gap: 20px;
+    border-left: 1px solid #222;
+    border-bottom: 1px solid #222;
+    align-items: stretch;
+    overflow: clip;
+
+    transform: translateX(100%);
+    transition:transform 0.3s ease;
+  }
+
+  .navbar nav.open {
+    transform: translateX(0);
+  }
+
+  .navbar nav a,
+  .navbar nav .book-btn {
+    font-size: 1rem;
+  }
+}
+
 
 /* ----------------------------- */
 /* MAIN CONTENT                  */
@@ -39,7 +129,7 @@ body {
 /* NAVBAR                        */
 /* ----------------------------- */
 .navbar {
-  width: 100%;
+  width: 100vw;
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -50,6 +140,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 /* Logo section */
@@ -61,6 +154,11 @@ body {
   font-weight: 700;
   color: white;
   line-height: 1;        /* ensures text aligns with image */
+}
+
+/* Hover effect */
+.logo:hover{
+  color: #FFD700;
 }
 
 .logo-img {
